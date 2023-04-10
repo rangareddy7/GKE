@@ -27,14 +27,11 @@ jobs:
          version: 'latest'
          project_id: ${{ secrets.GCP_PROJECT_ID }}
          service_account_key: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
-         zone: 'us-east1-b'
-
-      - name: Authenticate with Google Cloud
-        run: gcloud auth activate-service-account --key-file=${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+         zone: 'us-central1'
     
       - name: Set GKE context
-        run: gcloud container clusters get-credentials vespa-dev --zone us-east1-b --project vt-next-generation-346622
-    
+        run: gcloud container clusters get-credentials autopilot-cluster-1 --zone us-central1 --project resolute-vault-383304
+  
       - name: Run kubectl command
         run: kubectl get pods
 
