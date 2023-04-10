@@ -28,7 +28,8 @@ jobs:
          project_id: ${{ secrets.GCP_PROJECT_ID }}
          service_account_key: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
          zone: 'us-central1'
-    
+      - name: Log in to gcloud
+        run: gcloud auth login
       - name: Set GKE context
         run: gcloud container clusters get-credentials autopilot-cluster-1 --zone us-central1 --project resolute-vault-383304
   
